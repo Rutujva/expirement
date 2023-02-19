@@ -1,13 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Image Scroller</title>
+  <style>
+    #container {
+      width: 3600px;
+      height: 1200px;
+      overflow: hidden;
+    }
+
+    #image-scroller {
+      width: 36000px;
+      height: 1200px;
+      transition: transform 1s;
+    }
+
+    .image {
+      float: left;
+      width: 3600px;
+      height: 1200px;
+    }
+  </style>
 </head>
 <body>
-    <img src="compare photo.jpg" alt="compare">
-    
+  <div id="container">
+    <div id="image-scroller">
+      <img class="image" src="/Users/apple/Downloads/reviews1/review6.jpg">
+      <img class="image" src="/Users/apple/Downloads/reviews1/review5.jpg">
+      <img class="image" src="/Users/apple/Downloads/reviews1/review4.jpg">
+      <img class="image" src="/Users/apple/Downloads/reviews1/review3.jpg">
+      <img class="image" src="/Users/apple/Downloads/reviews1/review2.jpg">
+      <img class="image" src="/Users/apple/Downloads/reviews1/review1.jpg">
+    </div>
+  </div>
+
+  <script>
+    var imageScroller = document.getElementById('image-scroller');
+    var currentPosition = 0;
+    var scrollInterval = setInterval(scrollImages, 2000);
+
+    function scrollImages() {
+      currentPosition -= 3600;
+      if (currentPosition < -18000) {
+        currentPosition = 0;
+      }
+      imageScroller.style.transform = 'translateX(' + currentPosition + 'px)';
+    }
+  </script>
 </body>
 </html>
